@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<script type="text/javascript" charset="utf-8">
+		var nowtime_time =new Date().getTime();
+		var d = new Date();
+        //本地时间与GMT时间的时间偏移差R
+        var offset = d.getTimezoneOffset() * 60000;
+        //北京时间偏移差:北京市正8个小时
+        var offset_b = 480 * 60000;
+        // 获取北京时间
+       	var nowtime=  new Date(nowtime_time+offset+offset_b);
+		<!--
+		if(!!navigator.userAgent.match(/.*iphone.*|.*Linux.*|.*AppleWebKit.*Mobile.*/)){
+		window.location.href=window.location.href.replace("pc.html","h5.html");
+		}
+		-->
+		</script>
+		<title>Any800全渠道智能客服云平台</title>
+	<link rel="shortcut icon" href="256.ico"><link href="./css/pc.min.css?00e3828ac737a2c23cd6" rel="stylesheet"></head>
+	<body>
+		<div class="ucc">
+			<div class="top">
+				<div class="gap">
+					<a href="http://www.any800.com/" target="_blank"><img defsrc="/webpack//images/ucc-logo.png" class="ucc-logo"/></a>
+					<p class="ucc-title"></p>
+					<span class="ucc-logo-cancel"></span>
+				</div>
+				<!--gap end-->
+			</div>
+			<!--top end-->
+			<div class="main">
+				<div class="gap main-gap">
+					<div class="tab_info">
+						<!-- 选项卡 -->
+						<div class="tab_title"></div>
+						<div class="tab_main"></div>
+						<!-- <div class="tab-control">
+							标签
+							<div class="tab simple">
+								<ul id="tab_title">
+								</ul>
+							</div>
+							主体
+							<div class="tab-main">
+							</div>
+						</div> -->
+					</div>
+					<!--info end-->
+					<div class="dialogue">
+						<div class="dialogue-c">
+							<div class="dialogue-record">
+								<!-- <img class="watermark" defsrc="/webpack//images/watermarkPCBACK.png"> -->
+								<div class="dialogue-record-c" id='message'>
+									<div id="historyChat"></div>
+									<div class="service-info">
+										<!--系统提示语-->
+										<p><span id="sysmsg" class="font"></span></p>
+										<!--业务类型-->
+										<p id="bl"></p>
+										<p><span id="welcome" class="font"></span></p>
+									</div>
+								</div>
+								<!--dialogue-record-c end-->
+							</div>
+							<!--dialogue-record end-->
+							<div class="dialogue-area">
+								<div id="expander"></div>
+								<div class="dialogue-area-top">
+									<span class="messagerecord" >消息记录</span>
+									<div class="area-top-p" id="face_08" >
+										<span class="tool1" data-label="右侧常见问题" ><img defsrc="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA0AAAARCAYAAAAG/yacAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo0Q0RFMzdBRTRGNDlFNTExOTQ1OUNFRDVDMzU5MEM5MSIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDpEQkVBOUM2NzgzNkIxMUU1QjUxOUUzQTY2NDYzQjIyMSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDpEQkVBOUM2NjgzNkIxMUU1QjUxOUUzQTY2NDYzQjIyMSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M2IChXaW5kb3dzKSI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOjgzMkQ0NDgwQkI3QkU1MTFBOTI3OTU0QkU1MzU0MjhEIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjRDREUzN0FFNEY0OUU1MTE5NDU5Q0VENUMzNTkwQzkxIi8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+NMunHgAAAJVJREFUeNpi/P//PwMMNLa0ngFSxgz4gSsTmoASA2FwlhFmE9AWkA1noBLK9TXV93DpQrYJ5qz3+DSga4I57Swh92GziSxN9whpAgcEMBBATrtLQG060K+zkG1yISKo4S5ggdKCUHoP0DRXYv3kQqx/kDURHdxgTdBAUCLVJuSUsIdYTSTZgm7TWWI1MSLnJ2IBQIABACzNLgOiRxcKAAAAAElFTkSuQmCC" alt="右侧常见问题"/></span>
+										<span class="tool2" data-label="字体" ><img defsrc="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAARCAYAAADUryzEAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo0Q0RFMzdBRTRGNDlFNTExOTQ1OUNFRDVDMzU5MEM5MSIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDpFMTdDOEI4NTgzNkIxMUU1OTQxRkMzN0JFMDc4NUFBOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDpFMTdDOEI4NDgzNkIxMUU1OTQxRkMzN0JFMDc4NUFBOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M2IChXaW5kb3dzKSI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOjgzMkQ0NDgwQkI3QkU1MTFBOTI3OTU0QkU1MzU0MjhEIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjRDREUzN0FFNEY0OUU1MTE5NDU5Q0VENUMzNTkwQzkxIi8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+tNsEGwAAARpJREFUeNpibGhuYcADfIH4FxDvxKWABY9maSDeAMQ/oez32BQx4TGgGSrPCcR1uBThMkACiBOB+AEQvwTiLCAWJMWAVihdCsQ1QMwGxNXEGiALxAlAfBuI1wDxPCB+DMS5QCxCjAFVUPEGKP8fEHdAXVFCyACQ7SlAfBaIlyGJTwPim0Cch+4KdANqoFG7DYhVgFgdikHs7dAYqUTWwIiUkEC2P2IgDoBi5AN6QoLF9QIgvotDoxYQR0JjpBTZAHEgToK6IJGA7S5AnA3EIKd/hIVBEzQ8yohwfj1yWDAhhTzI2SuJMGAWED8D4kIgFmWCJlMQ3UhkAP4F4nZoukiGRdknIF7KQDyYCcQCQLyf8f///wyUAIAAAwDOVjSSuE4YtgAAAABJRU5ErkJggg=="/></span>
+										<span class="tool3" data-label="表情" ><img defsrc="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABIAAAARCAYAAADQWvz5AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo0Q0RFMzdBRTRGNDlFNTExOTQ1OUNFRDVDMzU5MEM5MSIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDpFN0VCNDY2MDgzNkIxMUU1ODMzMzhGMzgyOEM2NTA3MyIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDpFN0VCNDY1RjgzNkIxMUU1ODMzMzhGMzgyOEM2NTA3MyIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M2IChXaW5kb3dzKSI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOjgzMkQ0NDgwQkI3QkU1MTFBOTI3OTU0QkU1MzU0MjhEIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjRDREUzN0FFNEY0OUU1MTE5NDU5Q0VENUMzNTkwQzkxIi8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+zWsfmgAAAcZJREFUeNqE1F8on1Ecx/Ef+xUXJLEtl7tAiaZfUhpL/hSLIm7kYiEzUUqtRq1WFEWjjFhJSrnQRm3IvzXFXIiyaeUGFwploZSmLO9Tn1Onx09Ovep5nvOc7/k+53zPE/K+rd3naaEoQBFS8RDn2MccJnAWbJDbsrGJaWRhC2P4gSh8VMA3eOAO9DvXdRjAT6Rj3Xe7xaIVnchBCf65GZViEJ+UVbAgpp2gGcUKNOJ+WgT6MYMGXPvub+bdV6hAoQ1Uo5Qb8R8BLKLWMzgF82jS/ShW8c4GKsMC9vRCFXLR4glkZs/XGtk2hAzEmcVORpfT2YMwTHkCmY2IxpLzbMVm61fnsdO5q+/3tgPUe579tbtpPu0Uj53OJ/csdBzCdR1jd9ME2kam8+JXlN8R5JFKI0H3dtxvE+izFtFmUqkKfokQJ0gSltGLX04Rr+HQBBpWofVpF7dUbGaddjCuI2JKogPdCmImeoY2e0QuVIhfVJimnv7opUTEa1E3cKUgL3QKzCSz7hGZxGtlYWZP03OT0Telf6XC/aB1/I7qYId2SAN7taDbqpMjROIpnuMSbxXwOlggn7IJeP5Hec7/qPGu/9GNAAMAnolmXNNgc78AAAAASUVORK5CYII="/></span>
+										<span class="tool4" data-label="屏幕截图" ><img class="screenCapture" defsrc="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABIAAAARCAYAAADQWvz5AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNiAoV2luZG93cykiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6Q0Q5MEZBMDIwMUI1MTFFODg0N0FDNTlDN0U0OUZDNEMiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6Q0Q5MEZBMDMwMUI1MTFFODg0N0FDNTlDN0U0OUZDNEMiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDpDRDkwRkEwMDAxQjUxMUU4ODQ3QUM1OUM3RTQ5RkM0QyIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDpDRDkwRkEwMTAxQjUxMUU4ODQ3QUM1OUM3RTQ5RkM0QyIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/Ppwu2KUAAAICSURBVHjadNRLSFVRFMbxqx0QhTIUFQdCPgZB5gtNsIcIjryDHoZCUCo0iAR1oCKoJBkNokEQFeIrC8EKpZJrUmIi9oACywIpB+HAgeSgCNHsof8F34Xd7brhxzln37PXOXutdW5ER+clnzNa8BtXfduPHejFfYwFJz3nhnhc1NwnjG4TqBNVyHMDRTo3HMEq2nEHaWGCHEUz6rEfCeECxWIJlzGNYUQ7v2dgAK24q7ld4QJ9Q7LOq3TTTV1HK/AUriBJ8yv5uTm+C22t/+TohRaX4hlO4DVe4hBi9IBNVOAjQb6HS/ZX3EI3DuA9zqEPP1EIW1ik7Z3WuggL7oUks1HVeIQS5SQF8/iAVDzEDd7Gyu/z+/2boTmysYFjSMRtPS1OrWHFCGi7TcEFgUDgv60Fx4o9CK/UV8e1+KS2eAp/3AUWzHP2WYky3TSCcjzBWRxEsY6Wm8NvZ99ZvgbZ4oy7tW4l+gf+4p6qV6s8nVEz9qANy9ht7UDAmuDWCmAXuZhT4EFMKLnWxQtIVyH2WiDrH4I85/waxyF7o31YdILYmMQ6MnEd48jCG72NBbHDY/VeigX6ohLvcQLlqJsXnDk7z8bOkO/THrjk6bt6qqPlKQrn0Y/PzqIhNOgLGNBnUqt/g1VPLW8lrlPZf6EDXSFtsaY3aFSvWdWq8cB+3BJgAAU/hPJOZrmzAAAAAElFTkSuQmCC"/><img class="screenCaptureCheck" defsrc="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAARCAYAAADg1u3YAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNiAoV2luZG93cykiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6QjJERjlBMzEwMUI1MTFFODg2MEE5OUY1OEMzMjAyQTciIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6QjJERjlBMzIwMUI1MTFFODg2MEE5OUY1OEMzMjAyQTciPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDpCMkRGOUEyRjAxQjUxMUU4ODYwQTk5RjU4QzMyMDJBNyIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDpCMkRGOUEzMDAxQjUxMUU4ODYwQTk5RjU4QzMyMDJBNyIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/Pt0LNn8AAAB9SURBVHjaYvz//z8DPsDEQAAMBgWMW7ZsSQXShjjkz4NMWAHEX7BIgsRWgBR8BuLlWBSAxD7D3HAeihnQ+ciOXAE17QuUDQbMappa7FKSEn+B7F9A/BaIrwDxQ2Rv/jpz/gILDqsYGECR1dDcwgWisWGYG37gDCiKoxsgwADfBzhYqBfpjgAAAABJRU5ErkJggg=="/></span>
+										<span class="tool5" data-label="发送文件" ><img defsrc="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABUAAAARCAYAAAAyhueAAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo0Q0RFMzdBRTRGNDlFNTExOTQ1OUNFRDVDMzU5MEM5MSIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDoxQzlGNDEwNzgzNkMxMUU1ODU4NkIwQzA4MUIzQzNFMiIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDoxQzlGNDEwNjgzNkMxMUU1ODU4NkIwQzA4MUIzQzNFMiIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M2IChXaW5kb3dzKSI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOjgzMkQ0NDgwQkI3QkU1MTFBOTI3OTU0QkU1MzU0MjhEIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjRDREUzN0FFNEY0OUU1MTE5NDU5Q0VENUMzNTkwQzkxIi8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+IGIVCQAAAX1JREFUeNqs1M0rRFEYx/E742Yx1CihMKFkoZTsZJQkL7EithY2lv4AC2XW8lfYsLAQM4oUSTZS8tZkgZ1oJs0lZfg+9UydTseYqTn1qTt3zvzmnOc594ZWVhOeMWrRgSrjXoB7r4zhG2FrmEcYOWPOO9qQRwy32MQCvl2hEhDCNuIYQTXqDDENlFGPiM7b0rnO0DH0YxTH+Clhh0Po0+CIKzSuYc9llC2NAXRjxw72tZ6f1o/GsegIi2rjPF2ErHgPKUwhazbKc4Q2Y8Px3bJxLcHDOMS+ljDrF9niNdZLKMWLllBCTzDoe5UZsu1ZrfVEuEKhUT27d1LfYiuVzi457p/j1PjcgAN8yNaR+Ss0iXbtrr2ihJ4YGS06V7Y/aXY/cDwZSWWPXlzodSuO8KjHKTAP/5l2r7GMGnZqp2/swEKoPBFX2EVPiaGywkvM2IGF0Lz+24NOlLpkDGmdJ+NVQ6Qx0/gq9up7wxya0GW9T3PGW+oJNf9t41eAAQA2BlRPjK5naAAAAABJRU5ErkJggg=="/></span>
+										<span class="tool6" data-label="满意度评价" ><img defsrc="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABMAAAARCAYAAAA/mJfHAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo0Q0RFMzdBRTRGNDlFNTExOTQ1OUNFRDVDMzU5MEM5MSIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDoyMjRGMkNGQTgzNkMxMUU1OTFDQkFFNkJCNjdGQzI3NiIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDoyMjRGMkNGOTgzNkMxMUU1OTFDQkFFNkJCNjdGQzI3NiIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M2IChXaW5kb3dzKSI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOjgzMkQ0NDgwQkI3QkU1MTFBOTI3OTU0QkU1MzU0MjhEIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjRDREUzN0FFNEY0OUU1MTE5NDU5Q0VENUMzNTkwQzkxIi8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+AR2IewAAAXVJREFUeNqs1E0oRFEUwPF5LytWmoWlhXzsUBZK+V5gNeyslIVQsvCxUNRoLGQ1IqJImZKMpAzFQhILGytZ2Eg28rEUMs//6Fw9kzczprn1a6a5955777nnjuU4ji9bLScYmjLfC9CHRuTiBpvYQVzHtKITZXjHKRZwK522DqrCNVqwjXk8YAXnqMERonjDIjZQjSs0fe8MFtYRwQDMuVcxiWXdwQlKcec62RyCOrdQdlaOYky4Apn2iA60oTkhkGkh5KFBdubHK5498ioL7CfJ+4emxG9roiVyUYaXmC9HlDi23sQlBjMM1o97XJjbHEMv6v4ZqELnSr7jJpjkZBq7qE8zUCUOtUTW3HUmbRxhHCCQIpAseIwt9Jgf7YRBst1RHdTtESigC4b1xXz+PKc/Bs/iSatfymbG1ScLLGFIg/1+mx6rR7TuovpmRzCsBdql/b50g5lLkarf088StCPmNcFOkegz1OJFA8aSDbay+X/2JcAAmBxUTrhnpY8AAAAASUVORK5CYII="/></span>
+										<span class="tool7" data-label="语音通话" ><img defsrc="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA4AAAARCAYAAADtyJ2fAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo0Q0RFMzdBRTRGNDlFNTExOTQ1OUNFRDVDMzU5MEM5MSIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDoyODJBNTM1RTgzNkMxMUU1QkI1RkU5MzdGNTY3NEYwRCIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDoyODJBNTM1RDgzNkMxMUU1QkI1RkU5MzdGNTY3NEYwRCIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M2IChXaW5kb3dzKSI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOjgzMkQ0NDgwQkI3QkU1MTFBOTI3OTU0QkU1MzU0MjhEIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjRDREUzN0FFNEY0OUU1MTE5NDU5Q0VENUMzNTkwQzkxIi8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+MaQcQwAAAUdJREFUeNqk0ksoRHEUx/E745liwYKVx0IWkoQVKyslK49SspKlCDtJWMgsbciUYqMQkezsbDxCXsshIkkpC6TwPfW79e92GeVfn/4zc/9n7vmfcyKj4xNeYOUihjZk4wQj2HAPRQNBmdhBhQJtX8UK2t2DqYHALhSgFC/67QwfymIZX2FvrMWWE+SvJRTqT0NTTQsJsvWsPeOnwD+vfwX2oPOXgtlK1/6JLCuSBZajSQ8SqA4JrMEbHlCM1qjKXYcIFlCJYecaZZhGHO+ox409XEeeGmxvbEEf7nCKCxxgSNfox6J9eMQYZnCJbRShATk4xjlSMKsxjPmFmNK07CrNOWwG7jipEWy0vvr3sDHqRi8G8KQ0r3CNPWVmhTsK6+M8SpTmodIaRD46cJtsAO5V7Vfsq3+el6TZzVhzvidUoCr30LcAAwCOd0XCgt1GkQAAAABJRU5ErkJggg=="/></span>
+										<span class="tool9" data-label="保存对话记录" ><img defsrc="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAARCAYAAADUryzEAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo0Q0RFMzdBRTRGNDlFNTExOTQ1OUNFRDVDMzU5MEM5MSIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDo4RDJDRjlGQzhGNTAxMUU1QjZGM0E2RkIzOUU1MTE1NiIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDo4RDJDRjlGQjhGNTAxMUU1QjZGM0E2RkIzOUU1MTE1NiIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M2IChXaW5kb3dzKSI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOjdCMUM4RTM4MkM4RkU1MTE5MzY4RUE1RkFEM0U4MDlFIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjRDREUzN0FFNEY0OUU1MTE5NDU5Q0VENUMzNTkwQzkxIi8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+iDz3bAAAAK5JREFUeNpibGhuYQCCACA2YCANXADiDSxAoh+IC4D4AIkG1APxBBaozY1A3ECiASD19kwMFAKaG2AADWCyDQBpzh9QLxAELFDaHogdoOwHUIwrTASQ9IBdUAgV3A/F+QQSD0wdSE8hCzRJGhLp4kBiw6AByakwAEruCsQakA91Jj+UPx+aZwRwBSI6cIQaUIAklgj1LlEuuAA15AOS5gX4ohGXIYFQZ2/ApQggwACzdB3N6RNatgAAAABJRU5ErkJggg=="/></span>
+										<span class="tool10" id="picUpload" data-label="发送图片" ><img defsrc="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABIAAAAPCAYAAADphp8SAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyFpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNS1jMDE0IDc5LjE1MTQ4MSwgMjAxMy8wMy8xMy0xMjowOToxNSAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIChXaW5kb3dzKSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDo5Q0ZGMzFDMEJEMEQxMUU2OTFFOUJGQTZFRjE5QjZGNCIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDo5Q0ZGMzFDMUJEMEQxMUU2OTFFOUJGQTZFRjE5QjZGNCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOjlDRkYzMUJFQkQwRDExRTY5MUU5QkZBNkVGMTlCNkY0IiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjlDRkYzMUJGQkQwRDExRTY5MUU5QkZBNkVGMTlCNkY0Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+Tlj9rwAAASRJREFUeNpibGhusWJgYKgDYhEG8sAbIG5igRpyHIiPkmmQNcgMFqhL9gLxEQVZGawqHzx+gs+gH0Dsy4RFwhOIn0GxJ7HOwmbQXCCWhOK5lBiEDBgpMSgFiF8A8VMgTiagPwqIw0EMFiyS26DewgdA+sqAOACIt2MYhBY7QUCsAsTdQPwfSZwPiDuAWAeIS4D4HxB7s+CwUR6IC4CYC5rg5kHF5YC4D4g5gDgJiO8AsQ0ur4E090AVbYd6AWTrJaj4IyBOB+K36H5Fj6UGIOYF4iwgfg3Ef4G4EmrYXqj8L2yBhgzigdgWiDOhhoDAOqg6ISCeiRZeKAaBwsANaosBEG8GYjYgNkOOByg2xWIGSO9bkEHN0IzrhRZjxIJXoNwPEGAAUPI87i4MML8AAAAASUVORK5CYII="/></span>
+									</div>
+									<div class="label-pop">
+											<!--字体选择工具栏 begin-->
+										<div class="tool2-c">
+											<div id="color_picker" ></div>
+											<div class="tool-font">
+												<span class="tool-select" id="font1">微软雅黑</span>
+												<p id="font1-c">
+													<span>微软雅黑</span>
+													<span>宋体</span>
+													<span>楷体</span>
+													<span>华文魏碑</span>
+												</p>
+											</div>
+											<div class="tool-font2">
+												<span class="tool-select" id="font2">12</span>
+												<p id="font2-c">
+													<span>9</span>
+													<span>10</span>
+													<span>11</span>
+													<span>12</span>
+													<span>13</span>
+													<span>14</span>
+													<span>15</span>
+													<span>16</span>
+												</p>
+											</div>
+											<div class="tool-font3">
+												<span class="font" id="weight"><img title="粗体" defsrc="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAPCAYAAAAyPTUwAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo0Q0RFMzdBRTRGNDlFNTExOTQ1OUNFRDVDMzU5MEM5MSIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDo3Njk4N0RENTgzODgxMUU1ODZCQ0M5NjNCQjIzRTBFMyIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDo3Njk4N0RENDgzODgxMUU1ODZCQ0M5NjNCQjIzRTBFMyIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M2IChXaW5kb3dzKSI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOjgzMkQ0NDgwQkI3QkU1MTFBOTI3OTU0QkU1MzU0MjhEIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjRDREUzN0FFNEY0OUU1MTE5NDU5Q0VENUMzNTkwQzkxIi8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+ot6orgAAALJJREFUeNpi/P//PwOxgDEzM1MBSMfjkH8IxBumTZv2AabYAUjvx2MgSKEjUMMFFjQJRyQ2yMZ+IBaA0o4oioG6DyDzs7KyQKauB2KQ7QxMBPwkAKUfgAgWNJPq0ZyRAHVzIYZiIGjA4UEGbIod0ZyQD3XvfKCtF/B6EBTGQEX3oU4KYCIi4h5AaX68ioGmGsCCDQguosfgATQ3G0DZF4BONET3oAMWJxyABR0jKakOIMAABt80say4EQ8AAAAASUVORK5CYII="/></span>
+												<span class="font" id="em"><img title="斜体" defsrc="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA0AAAAPCAYAAAA/I0V3AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo0Q0RFMzdBRTRGNDlFNTExOTQ1OUNFRDVDMzU5MEM5MSIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDo3Q0FEOTUyODgzODgxMUU1QjJCQkUxMjhGODZBNDlFRCIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDo3Q0FEOTUyNzgzODgxMUU1QjJCQkUxMjhGODZBNDlFRCIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M2IChXaW5kb3dzKSI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOjgzMkQ0NDgwQkI3QkU1MTFBOTI3OTU0QkU1MzU0MjhEIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjRDREUzN0FFNEY0OUU1MTE5NDU5Q0VENUMzNTkwQzkxIi8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+tvHUsQAAAKFJREFUeNpi/P//PwOpgBGbpqysLAMgNRuIRYD4AVRYAYhfAHEkIy6bgBodgNR+JKFmIJ43bdq0Byx4XGGPxD4AVFwH4zDh0ZSAxE5ElmDC4bQEqB9AYAHISQQ1AUE9ErsRXZKJVFtw2YTXFgxNaLYcwGYLNpsI2oKiCWhLAZItF4C2HMCZjDIzM0FOmgrEXGhyD4AaFYlOe4QAEwMZACDAAKpvNqvmCjpXAAAAAElFTkSuQmCC"/></span>
+												<span class="font" id="decoration"><img title="下划线" defsrc="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA0AAAAPCAYAAAA/I0V3AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo0Q0RFMzdBRTRGNDlFNTExOTQ1OUNFRDVDMzU5MEM5MSIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDpBNkU0ODAwQjgzODgxMUU1OERFQUEwOTNEMzBCQkI3MiIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDpBNkU0ODAwQTgzODgxMUU1OERFQUEwOTNEMzBCQkI3MiIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M2IChXaW5kb3dzKSI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOjgzMkQ0NDgwQkI3QkU1MTFBOTI3OTU0QkU1MzU0MjhEIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjRDREUzN0FFNEY0OUU1MTE5NDU5Q0VENUMzNTkwQzkxIi8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+FsHWPwAAAKFJREFUeNpi/P//P0NWVpYBAwNDPxBfmDZtWiEDGgDKg+RAagqB8hdYoOICQOzAgBsYQOVB6hiYGMgAo5pwaFLAoQ5FnBEUudAI/A8VSwRG4AKkiAXFz34QGyjOCKJZkAyYAMQFQDwfqNAeSD+ARmoAkjyqTUjJpQCL8yYgJy8UTWhOYoA66QC6PGNmZmYCkJYnIfAOgvykD3U7seAhQIABAGEOMev/YdKKAAAAAElFTkSuQmCC"/></span>
+												<span class="face-color" id="font-color"></span>
+											</div>
+											
+										</div>
+										<!--tool2-c end-->
+										<!--字体选择工具栏 end-->
+										<div class="screenCaptureCheckBox">
+												<p class="box"><span class="checked" data-send="0"></span><span>截图时隐藏当前窗口</span></p>
+										</div>
+										<!--表情 begin-->
+										<div class="face-c">
+										</div>
+										<!--表情 begin-->
+									</div>
+									<!--label-pop end-->
+								</div>
+								<!--dialogue-area-top end-->
+								<div class="dialogue-area-text">
+									<div class="dialogue-area-write" contenteditable="false"  ></div>
+								</div>
+								<!--dialogue-area-text end-->
+							</div>
+							<!--dialogue-area end-->
+							<div class="dialogue-area-btn">
+								<a  id="close">结束对话</a>
+								<a  class="send">发送</a>
+								<a  class="send-select">&nbsp;</a>
+								<div class="send-key" >
+									<div class="send-key-c">
+										<p class="send-border"><span class="send-ok send-ok-ok" data-send="0"></span><span>按Enter键发送消息</span></p>
+										<p><span class="send-ok" data-send="1"></span><span>按Ctrl+Enter键发送消息</span></p>
+									</div>
+								</div>
+							</div>
+							<!--dialogue-area-btn end-->
+							<div class="dialogue-area-bottom">
+								<p><a href="http://www.any800.com/" target="_blank"><img defsrc="/webpack//images/watermarkPC.png"/></a></p>
+							</div>
+							<!--dialogue-area-bottom end-->
+						</div>
+						<!--dialogue-c end-->
+					</div>
+					<!--dialogue end-->
+				</div>
+				<!--gap end-->
+			</div>
+			<!--main end-->
+		</div>
+		<!--ucc end-->
+	</div>
+  <script>
+  var ucc={};
+  var debug,datas, params, Alert, showBigImgFun, storage,localHistory;
+  var screenCapture,webSocket,tab,systemInfo,monitor,msgdb, visitLimit, langTip, robot, History, visitorInformation, leaveMessage, satisfaction,
+    visitorRobot, fontStyle, heartBeat, dialogue, skin, detectWeb, workTime, bList, TimeoutList, changeFaceFun,
+    sensitive, userDatas, changeWindow, queue;
+  var pageLoad, uccPcInit, uccPcEvent, uccPcLogic;
+  </script>
+<script type="text/javascript" src="pc.js?00e3828ac737a2c23cd6"></script></body>
+</html>

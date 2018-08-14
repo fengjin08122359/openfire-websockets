@@ -1,0 +1,46 @@
+.logBox{
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    width: 60%;
+    height: 60%;
+    background: rgb(255, 255, 255);
+    border: 1px solid #000;
+    border-radius: 5px;
+    z-index: 1000000;
+    display:none;
+    cursor: move;
+}
+.logBox .tools{
+  position: absolute;
+    top: 0px;
+    width: 80%;
+    height: 20px;
+    margin: 10px 10%;
+}
+.logBox .list{
+  position: absolute;
+        top: 40px;
+        width: 100%;
+        bottom: 0px;
+        overflow-x: hidden;
+        overflow-y: auto;
+        word-break: break-all;
+}
+.logBox .tools span{
+  width: 20%;
+        box-sizing: border-box;
+        display: inline-block;
+        text-align: center;
+        line-height: 20px;
+        background: #e1e1e1;
+        cursor:pointer;
+}
+.logBoxcol{
+  background: #333333;
+  color:#fff;
+}
+.logBoxcol:nth-child(even){
+  background: #fff;
+  color:#333333;
+}

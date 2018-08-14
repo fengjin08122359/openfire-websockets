@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<script type="text/javascript" charset="utf-8">
+		var nowtime_time =new Date().getTime();
+		var d = new Date();
+        //本地时间与GMT时间的时间偏移差R
+        var offset = d.getTimezoneOffset() * 60000;
+        //北京时间偏移差:北京市正8个小时
+        var offset_b = 480 * 60000;
+        // 获取北京时间
+       	var nowtime=  new Date(nowtime_time+offset+offset_b);
+		</script>
+		<title>Any800全渠道智能客服云平台</title>
+	</head>
+	<body>
+		<div class="ucc">
+			<div class="top">
+				<div class="gap">
+					<a href="http://www.any800.com/" target="_blank"><img defsrc="<%= require('../images/pc/ucc-logo.png')  %>" class="ucc-logo"/></a>
+					<p class="ucc-title"></p>
+					<span class="ucc-logo-cancel"></span>
+				</div>
+				<!--gap end-->
+			</div>
+			<!--top end-->
+			<div class="main">
+				<div class="gap main-gap">
+					<div class="tab_info">
+						<!-- 选项卡 -->
+						<div class="tab_title"></div>
+						<div class="tab_main"></div>
+						<!-- <div class="tab-control">
+							标签
+							<div class="tab simple">
+								<ul id="tab_title">
+								</ul>
+							</div>
+							主体
+							<div class="tab-main">
+							</div>
+						</div> -->
+					</div>
+					<!--info end-->
+					<div class="dialogue">
+						<div class="dialogue-c">
+							<div class="dialogue-record">
+								<!-- <img class="watermark" defsrc="<%= require('../images/pc/watermarkPCBACK.png')  %>"> -->
+								<div class="dialogue-record-c" id='message'>
+									<div id="historyChat"></div>
+									<div class="service-info">
+										<!--系统提示语-->
+										<p><span id="sysmsg" class="font"></span></p>
+										<!--业务类型-->
+										<p id="bl"></p>
+										<p><span id="welcome" class="font"></span></p>
+									</div>
+								</div>
+								<!--dialogue-record-c end-->
+							</div>
+							<!--dialogue-record end-->
+							<div class="dialogue-area">
+								<div id="expander"></div>
+								<div class="dialogue-area-top">
+									<span class="messagerecord" >消息记录</span>
+									<div class="area-top-p" id="face_08" >
+										<span class="tool1" data-label="右侧常见问题" ><img defsrc="<%= require('../images/pc/f.png')  %>" alt="右侧常见问题"/></span>
+										<span class="tool2" data-label="字体" ><img defsrc="<%= require('../images/pc/font.png')  %>"/></span>
+										<span class="tool3" data-label="表情" ><img defsrc="<%= require('../images/pc/face.png')  %>"/></span>
+										<span class="tool4" data-label="屏幕截图" ><img class="screenCapture" defsrc="<%= require('../images/pc/screenshotLeft.png')  %>"/><img class="screenCaptureCheck" defsrc="<%= require('../images/pc/screenshotRight.png')  %>"/></span>
+										<span class="tool5" data-label="发送文件" ><img defsrc="<%= require('../images/pc/transfer.png')  %>"/></span>
+										<span class="tool6" data-label="满意度评价" ><img defsrc="<%= require('../images/pc/pingjia.png')  %>"/></span>
+										<span class="tool7" data-label="语音通话" ><img defsrc="<%= require('../images/pc/yuyin.png')  %>"/></span>
+										<span class="tool9" data-label="保存对话记录" ><img defsrc="<%= require('../images/pc/save.png')  %>"/></span>
+										<span class="tool10" id="picUpload" data-label="发送图片" ><img defsrc="<%= require('../images/pc/sendPic.png')  %>"/></span>
+									</div>
+									<div class="label-pop">
+											<!--字体选择工具栏 begin-->
+										<div class="tool2-c">
+											<div id="color_picker" ></div>
+											<div class="toolFont tool-font">
+												<span class="tool-select" id="font1">微软雅黑</span>
+												<p id="font1-c">
+													<span>微软雅黑</span>
+													<span>宋体</span>
+													<span>楷体</span>
+													<span>华文魏碑</span>
+												</p>
+											</div>
+											<div class="toolFont tool-font2">
+												<span class="tool-select" id="font2">12</span>
+												<p id="font2-c">
+													<span>9</span>
+													<span>10</span>
+													<span>11</span>
+													<span>12</span>
+													<span>13</span>
+													<span>14</span>
+													<span>15</span>
+													<span>16</span>
+												</p>
+											</div>
+											<div class="tool-font3">
+												<span class="font" id="weight"><img title="粗体" defsrc="<%= require('../images/pc/font-weight.png')  %>"/></span>
+												<span class="font" id="em"><img title="斜体" defsrc="<%= require('../images/pc/font-italic.png')  %>"/></span>
+												<span class="font" id="decoration"><img title="下划线" defsrc="<%= require('../images/pc/font-underline.png')  %>"/></span>
+												<span class="face-color" id="font-color"></span>
+											</div>
+											
+										</div>
+										<!--tool2-c end-->
+										<!--字体选择工具栏 end-->
+										<div class="screenCaptureCheckBox">
+												<p class="box"><span class="checked" data-send="0"></span><span>截图时隐藏当前窗口</span></p>
+										</div>
+										<!--表情 begin-->
+										<div class="face-c">
+										</div>
+										<!--表情 begin-->
+									</div>
+									<!--label-pop end-->
+								</div>
+								<!--dialogue-area-top end-->
+								<div class="dialogue-area-text">
+									<div class="dialogue-area-write" contenteditable="false"  ></div>
+								</div>
+								<!--dialogue-area-text end-->
+							</div>
+							<!--dialogue-area end-->
+							<div class="dialogue-area-btn">
+								<a  id="close">结束对话</a>
+								<a  class="send">发送</a>
+								<a  class="send-select">&nbsp;</a>
+								<div class="send-key" >
+									<div class="send-key-c">
+										<p class="send-border"><span class="send-ok send-ok-ok" data-send="0"></span><span>按Enter键发送消息</span></p>
+										<p><span class="send-ok" data-send="1"></span><span>按Ctrl+Enter键发送消息</span></p>
+									</div>
+								</div>
+							</div>
+							<!--dialogue-area-btn end-->
+							<div class="dialogue-area-bottom">
+								<p><a href="http://www.any800.com/" target="_blank"><img defsrc="<%= require('../images/pc/watermarkPC.png')  %>"/></a></p>
+							</div>
+							<!--dialogue-area-bottom end-->
+						</div>
+						<!--dialogue-c end-->
+					</div>
+					<!--dialogue end-->
+				</div>
+				<!--gap end-->
+			</div>
+			<!--main end-->
+		</div>
+		<!--ucc end-->
+	</div>
+  <script>
+  var ucc={};
+  var debug,datas, params, Alert, showBigImgFun, storage,localHistory;
+  var screenCapture,webSocket,tab,systemInfo,monitor,msgdb, visitLimit, langTip, robot, History, visitorInformation, leaveMessage, satisfaction,
+    visitorRobot, fontStyle, heartBeat, dialogue, skin, detectWeb, workTime, bList, TimeoutList, changeFaceFun,
+    sensitive, userDatas, changeWindow, queue;
+  var pageLoad, uccPcInit, uccPcEvent, uccPcLogic, appearance;
+  </script>
+</body>
+</html>

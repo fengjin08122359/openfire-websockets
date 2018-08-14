@@ -1,0 +1,1 @@
+require('../openfire-websocket/client')
