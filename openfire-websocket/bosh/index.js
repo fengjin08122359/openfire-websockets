@@ -1,4 +1,5 @@
 var getUrl = require('./getUrl');
+var getResource = require('./getResource');
 var config = require('../config');
 var keyFrame = require('../util/key-frame');
 var strophe = require('strophe.js');
@@ -6,6 +7,7 @@ var connection = new strophe.Strophe.Connection(getUrl);
 var connected = false;
 var clientId = '';
 var username = config.username.indexOf(config.domain) > -1 ? config.username : (config.username + '@' + config.domain)
+		
 function onConnect(status) {
   if (status == strophe.Strophe.Status.CONNFAIL) {
       keyFrame.push("login","CONNFAIL")
@@ -22,7 +24,8 @@ function onConnect(status) {
       connection.addHandler(onSuccess, null, 'success', null, null, null);
       connection.addHandler(onFail, null, 'failure', null, null, null);    
       connection.send(strophe.$pres().tree());
-
+      connection.clientId = connection._proto.sid;
+      keyFrame.push("success","websocket connected!")
   }
 }
 
@@ -31,9 +34,9 @@ function onFail(msg){
 }
 
 function onSuccess(msg) {
-  connection.clientId = connection._proto.sid;
 }
 keyFrame.push("login",username+config.password+getUrl)
-connection.connect(username ,config.password, onConnect);
-
+connection.connectFun = function(){
+	connection.connect(username+"/"+nclientAPI.connection.getUniqueId() ,config.password, onConnect);
+}
 module.exports = connection

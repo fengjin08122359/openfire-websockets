@@ -12,17 +12,17 @@ module.exports = {
       console.log(logStr);
     }
   },
-  addHandler(handerName,key,callback){
-    this.removeHandler(handerName,key);
+  addHandler(handlerName,key,callback){
+    this.removeHandler(handlerName,key);
     this.handlers.push({
-      handerName:handerName,
+    	handlerName:handlerName,
       key:key,
       callback:callback,
     })
   },
-  removeHandler(handerName,key){
+  removeHandler(handlerName,key){
     for (var i=0,len = this.handlers.length;i<len;i++){
-      if (handerName == this.handlers[i].handerName) {
+      if (handlerName == this.handlers[i].handlerName) {
         if (!key || key==this.handlers[i].key ) {
           this.handlers.splice(i,1);
           break;

@@ -6,6 +6,5 @@ function guid() {
     }
     return s4() + s4() + '-' + s4() + '-' + s4() + '-' + s4() + '-' + s4() + s4() + s4();
 }
-var resource = guid();
 
-module.exports = resource;
+module.exports = guid;

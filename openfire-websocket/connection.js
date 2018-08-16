@@ -19,19 +19,20 @@ var nclientAPI = {
   connection:null,
   keyFrame: require('./util/key-frame'),
   Strophe:strophe.Strophe,
-  callbacks:{
-    onMessage:function(){},
-    onPresence:function(){},
-  },
   setConfig:function(conf){
     var conn = this;
     config = extend(true,config,conf);
   },
-  init:function(conf){
+  setLogin:function(username,password){
+	config.username = username;
+	config.password = password;
+  },
+  init:function(type){
     var conn = this;
     if (conn.connection) return;
     conn.keyFrame.addHandler("default","buildConnection",function(event,key,data){
       //console.log(data);
+    	conn.type = data;
     })
     conn.keyFrame.addHandler("default","login",function(event,key,data){
       //console.log(data);
@@ -48,27 +49,52 @@ var nclientAPI = {
     conn.keyFrame.addHandler("default","send",function(event,key,data){
       //console.log(data.tree());
     })
-    if ( !! window.WebSocket && window.WebSocket.prototype.send) {
-      conn.setConnection("websocket")
-    } else {
-      conn.setConnection("bosh")
+    conn.keyFrame.addHandler("default","success",function(event,key,data){
+      //console.log(data.tree());
+    	var ping = require('./util/ping');
+    	ping.init();
+    })
+    if (type && (type=="websocket"||type=="bosh")) {
+    	conn.setConnection(type)
+    }else{
+    	if ( !! window.WebSocket && window.WebSocket.prototype.send) {
+		  conn.setConnection("websocket")
+		} else {
+		  conn.setConnection("bosh")
+		}
     }
+    
+  },
+  addConnectionHandler:function(handler, ns, name, type, id, from, options){
+	  this.connection.addHandler(handler, ns, name, type, id, from, options);
   },
   setConnection:function(type){
-    if (this.connection) {
-      this.connection.close();
+	if (!this.connection) {
+
+    	nclientAPI.keyFrame.push("buildConnection",type)
+        if (type == "websocket") {
+          this.connection = require('./websocket');
+        } else if (type == "bosh") {
+          this.connection = require('./bosh');
+          
+        }
+    }else if (this.connection.connected) {
+    	this.connection.disconnect();
     }
-    nclientAPI.keyFrame.push("buildConnection",type)
-    if (type == "websocket") {
-      this.connection = require('./bosh');
-    } else if (type == "bosh") {
-      this.connection = require('./bosh');
-      
-    }
+	this.connection.connectFun();
     if (this.connection) {
       this.connection.addHandler(this.onMessage, null, 'message', null, null, null);
       this.connection.addHandler(this.onPresence, null, 'presence', null, null, null);
     }
+  },
+  reconnect:function(){
+	  var api = this;
+	  this.connection.disconnect();
+	  setTimeout(function(){
+		  if (!api.connection.connected) {
+			  api.setConnection(api.type);
+		  }
+	  },(config.reconnectTime || 10)*1000 )
   },
   send:function(msg){
     nclientAPI.keyFrame.push("send",msg)
@@ -99,9 +125,11 @@ var nclientAPI = {
   },
   onPresence:function(msg){
     nclientAPI.keyFrame.push("onPresence",msg)
+    return true;
   }
 }
 //nclientAPI.addInRoom("mike@conference.openfire-test")
-//nclientAPI.changeStatus("offline")
+//nclientAPI.changeStatus("offline");
+window.nclientAPI = nclientAPI;
 return nclientAPI;
 }));
